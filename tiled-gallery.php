@@ -1,7 +1,7 @@
 <?php
 
 /*
-Plugin Name: Tiled Galleries Carousel Without Jetpack
+Plugin Name: Jetpack Mosaic Gallery with Modaal
 Plugin URL: https://themepacific.com/
 Description: Transform your standard image galleries into an immersive full-screen experience without Jetpack.This plugin is made from Jetpack Modules. You can get the tiled galleries with Full screen carousel with out connecting to wordpress.com account.
 Version: 2.2
