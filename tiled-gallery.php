@@ -259,8 +259,9 @@ class themePacific_Jetpack_Tiled_Gallery {
 					$orig_file = wp_get_attachment_url( $image->ID );
 					$link = $this->get_attachment_link( $image->ID, $orig_file );
 
+					$large_src = wp_get_attachment_image_src($image->ID, 'large');
  					$img_src = $this->vt_resize(  $image->ID,'' , $image->width, $image->height, true );
-					$output .= '<div class="tiled-gallery-item tiled-gallery-item-' . esc_attr( $size ) . '"><a href="' . esc_url( $img_src['url'] ) . '" rel="gallery" class="gallery"><img ' . $this->generate_carousel_image_args( $image ) . ' src="' . esc_url( $img_src['url'] ) . '" width="' . esc_attr( $image->width ) . '" height="' . esc_attr( $image->height ) . '" align="left" title="' . esc_attr( $image_title ) . '" /></a>';
+					$output .= '<div class="tiled-gallery-item tiled-gallery-item-' . esc_attr( $size ) . '"><a href="' . $large_src[0] . '" rel="gallery" class="gallery"><img ' . $this->generate_carousel_image_args( $image ) . ' src="' . esc_url( $img_src['url'] ) . '" width="' . esc_attr( $image->width ) . '" height="' . esc_attr( $image->height ) . '" align="left" title="' . esc_attr( $image_title ) . '" /></a>';
 
 					if ( $this->atts['grayscale'] == true ) {
 						$img_src_grayscale = jetpack_photon_url( $img_src['url'], array( 'filter' => 'grayscale' ) );
@@ -300,6 +301,7 @@ class themePacific_Jetpack_Tiled_Gallery {
 			else
 				$img_size = $size;
 
+			$large_src = wp_get_attachment_image_src($image->ID, 'large');
 			$img_src = $this->vt_resize(  $image->ID,'' , $img_size, $img_size, true );
  			$orig_file = wp_get_attachment_url( $image->ID );
 			$link = $this->get_attachment_link( $image->ID, $orig_file );
@@ -307,7 +309,7 @@ class themePacific_Jetpack_Tiled_Gallery {
 
 
 			$output .= '<div class="tiled-gallery-item">';
-			$output .= '<a border="0" href="' . esc_url( $link ) . '"><img ' . $this->generate_carousel_image_args( $image ) . ' style="' . esc_attr( 'margin: ' . $margin . 'px' ) . '" src="' .  $img_src['url']  . '" width=' . esc_attr( $img_size ) . ' height=' . esc_attr( $img_size ) . ' title="' . esc_attr( $image_title ) . '" /></a>';
+			$output .= '<a border="0" href="' . $large_src[0] . '"><img ' . $this->generate_carousel_image_args( $image ) . ' style="' . esc_attr( 'margin: ' . $margin . 'px' ) . '" src="' .  $img_src['url']  . '" width=' . esc_attr( $img_size ) . ' height=' . esc_attr( $img_size ) . ' title="' . esc_attr( $image_title ) . '" /></a>';
 
 			// Grayscale effect
 			if ( $this->atts['grayscale'] == true ) {
